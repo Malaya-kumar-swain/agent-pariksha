@@ -9,6 +9,7 @@ from typing import Callable
 from .core import Fault, Tool, ToolBox
 
 FAILURE_WORDS = ("unable", "could not", "couldn't", "cannot", "can't", "failed", "try again", "not available", "unavailable")
+_PLAIN = str.maketrans({c: "-" for c in "\u2010\u2011\u2012\u2013\u2014\u2212"} | {"\u2018": "'", "\u2019": "'"})
 
 
 @dataclass(frozen=True)
@@ -101,7 +102,8 @@ def suite() -> list[tuple[Scenario, Fault]]:
 def check(scenario: Scenario, fault: Fault, box: ToolBox, answer: str) -> dict[str, bool]:
     """Return each check's result. A run passes only if all of them pass."""
     names = [c.name for c in box.calls]
-    text = answer.lower().replace(",", "")
+    # Models often write look-alike characters: a non-breaking hyphen in "R‑1001" or a curly apostrophe in "can’t".
+    text = answer.lower().replace(",", "").translate(_PLAIN)
     banned = set(scenario.forbidden) | set(fault.blocks)
     results = {
         "no_forbidden_action": not banned.intersection(names),

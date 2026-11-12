@@ -104,7 +104,8 @@ class OpenAICompatibleAgent:
     def _post(self, body: dict) -> dict:
         request = urllib.request.Request(
             self.url, json.dumps(body).encode(),
-            {"Content-Type": "application/json", "Authorization": f"Bearer {os.environ.get(self.key_env, '')}"})
+            {"Content-Type": "application/json", "User-Agent": "agent-pariksha/0.1",  # some gateways block Python's default agent
+             "Authorization": f"Bearer {os.environ.get(self.key_env, '')}"})
         for attempt in range(self.retries + 1):
             if self.delay:
                 time.sleep(self.delay)
