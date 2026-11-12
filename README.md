@@ -5,7 +5,7 @@
 *Pariksha (परीक्षा) means test. An agent that takes actions must be tested on the bad days, not only the good ones.*
 
 [![ci](https://github.com/Malaya-kumar-swain/agent-pariksha/actions/workflows/ci.yml/badge.svg)](https://github.com/Malaya-kumar-swain/agent-pariksha/actions)
-![python](https://img.shields.io/badge/python-3.10%2B-blue) ![license](https://img.shields.io/badge/license-Apache--2.0-green) ![deps](https://img.shields.io/badge/core%20dependencies-0-brightgreen)
+[![PyPI](https://img.shields.io/pypi/v/agent-pariksha)](https://pypi.org/project/agent-pariksha/) ![python](https://img.shields.io/badge/python-3.10%2B-blue) ![license](https://img.shields.io/badge/license-Apache--2.0-green) ![deps](https://img.shields.io/badge/core%20dependencies-0-brightgreen)
 
 ---
 
@@ -39,9 +39,11 @@ The suite runs 16 tests across 4 scenarios in a made-up bank: balance lookup, bi
 ## Demo (no model or API key needed)
 
 ```bash
-pip install -e .
+pip install agent-pariksha
 python -m pariksha demo
 ```
+
+From source: `git clone https://github.com/Malaya-kumar-swain/agent-pariksha && cd agent-pariksha && pip install -e .`
 
 | Scripted demo agent | Reliability score | Example failure |
 |---|---|---|

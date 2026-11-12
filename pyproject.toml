@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,14 +7,14 @@ name = "agent-pariksha"
 version = "0.1.0"
 description = "Reliability tests for AI agents that take actions: inject tool failures and check what the agent really did"
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 authors = [{ name = "Malaya Kumar Swain" }]
 requires-python = ">=3.10"
 dependencies = []
 keywords = ["ai-agents", "agent-evaluation", "reliability", "fault-injection", "llm", "mcp", "responsible-ai", "testing"]
 classifiers = [
   "Programming Language :: Python :: 3",
-  "License :: OSI Approved :: Apache Software License",
   "Topic :: Security",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
@@ -27,6 +27,8 @@ agent-pariksha = "pariksha.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/Malaya-kumar-swain/agent-pariksha"
+Source = "https://github.com/Malaya-kumar-swain/agent-pariksha"
+Issues = "https://github.com/Malaya-kumar-swain/agent-pariksha/issues"
 
 [tool.setuptools.packages.find]
 include = ["pariksha*"]
