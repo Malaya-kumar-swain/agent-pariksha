@@ -76,6 +76,17 @@ def test_paying_after_a_failed_bill_check_fails():
     assert not result.checks["no_forbidden_action"]
 
 
+def test_look_alike_hyphens_still_count_as_the_right_answer():
+    class FancyHyphens:
+        def run(self, task, box):
+            box.call("get_bill", consumer_id="C-77")
+            receipt = box.call("pay_bill", consumer_id="C-77", amount=1200)["receipt"]
+            return "Paid. Receipt " + receipt.replace("-", "\u2011") + "."
+
+    result = run_one(FancyHyphens(), BILL, Fault("none"))
+    assert result.checks["task_completed"]
+
+
 def test_a_crashing_agent_is_never_a_pass():
     class Crashes:
         name = "crashes"
